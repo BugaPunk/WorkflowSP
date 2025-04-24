@@ -6,6 +6,7 @@ import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $about from "./routes/about.tsx";
 import * as $api_db_test from "./routes/api/db-test.ts";
+import * as $api_users from "./routes/api/users.ts";
 import * as $auth_login from "./routes/auth/login.tsx";
 import * as $auth_logout from "./routes/auth/logout.ts";
 import * as $auth_register from "./routes/auth/register.tsx";
@@ -13,8 +14,12 @@ import * as $dashboard_index from "./routes/dashboard/index.tsx";
 import * as $dashboard_projects from "./routes/dashboard/projects.tsx";
 import * as $dashboard_tasks from "./routes/dashboard/tasks.tsx";
 import * as $dashboard_team from "./routes/dashboard/team.tsx";
+import * as $dashboard_users from "./routes/dashboard/users.tsx";
 import * as $index from "./routes/index.tsx";
+import * as $ModalIsland from "./islands/ModalIsland.tsx";
+import * as $NewUserButtonIsland from "./islands/NewUserButtonIsland.tsx";
 import * as $SidebarIsland from "./islands/SidebarIsland.tsx";
+import * as $UserFormIsland from "./islands/UserFormIsland.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -23,6 +28,7 @@ const manifest = {
     "./routes/_app.tsx": $_app,
     "./routes/about.tsx": $about,
     "./routes/api/db-test.ts": $api_db_test,
+    "./routes/api/users.ts": $api_users,
     "./routes/auth/login.tsx": $auth_login,
     "./routes/auth/logout.ts": $auth_logout,
     "./routes/auth/register.tsx": $auth_register,
@@ -30,10 +36,14 @@ const manifest = {
     "./routes/dashboard/projects.tsx": $dashboard_projects,
     "./routes/dashboard/tasks.tsx": $dashboard_tasks,
     "./routes/dashboard/team.tsx": $dashboard_team,
+    "./routes/dashboard/users.tsx": $dashboard_users,
     "./routes/index.tsx": $index,
   },
   islands: {
+    "./islands/ModalIsland.tsx": $ModalIsland,
+    "./islands/NewUserButtonIsland.tsx": $NewUserButtonIsland,
     "./islands/SidebarIsland.tsx": $SidebarIsland,
+    "./islands/UserFormIsland.tsx": $UserFormIsland,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;

@@ -1,108 +1,12 @@
 import { useState } from "preact/hooks";
 import { cn, useIsMobile } from "../utils/hooks.ts";
-import { JSX } from "preact";
 
-// Icons
-function HomeIcon(props: JSX.HTMLAttributes<SVGSVGElement>) {
+// Material Symbols Icons Component
+function MaterialIcon({ name, className = "" }: { name: string; className?: string }) {
   return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-      <polyline points="9 22 9 12 15 12 15 22" />
-    </svg>
-  );
-}
-
-function UsersIcon(props: JSX.HTMLAttributes<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-      <circle cx="9" cy="7" r="4" />
-      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-    </svg>
-  );
-}
-
-function ProjectIcon(props: JSX.HTMLAttributes<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
-    </svg>
-  );
-}
-
-function TaskIcon(props: JSX.HTMLAttributes<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
-      <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
-      <path d="m9 14 2 2 4-4" />
-    </svg>
-  );
-}
-
-function LogoutIcon(props: JSX.HTMLAttributes<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-      <polyline points="16 17 21 12 16 7" />
-      <line x1="21" x2="9" y1="12" y2="12" />
-    </svg>
+    <span className={`material-symbols-outlined ${className}`}>
+      {name}
+    </span>
   );
 }
 
@@ -111,22 +15,27 @@ const navItems = [
   {
     title: "Dashboard",
     href: "/dashboard",
-    icon: HomeIcon,
+    iconName: "dashboard",
   },
   {
     title: "Proyectos",
     href: "/dashboard/projects",
-    icon: ProjectIcon,
+    iconName: "folder",
   },
   {
     title: "Tareas",
     href: "/dashboard/tasks",
-    icon: TaskIcon,
+    iconName: "task",
   },
   {
     title: "Equipo",
     href: "/dashboard/team",
-    icon: UsersIcon,
+    iconName: "group",
+  },
+  {
+    title: "Usuarios",
+    href: "/dashboard/users",
+    iconName: "person",
   },
 ];
 
@@ -168,21 +77,7 @@ export default function SidebarIsland({
           onClick={toggleMobileMenu}
           className="fixed top-4 left-4 z-50 p-2 bg-blue-600 text-white rounded-md"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <line x1="3" x2="21" y1="6" y2="6" />
-            <line x1="3" x2="21" y1="12" y2="12" />
-            <line x1="3" x2="21" y1="18" y2="18" />
-          </svg>
+          <MaterialIcon name="menu" className="icon-md" />
         </button>
 
         {isMobileMenuOpen && (
@@ -196,20 +91,7 @@ export default function SidebarIsland({
                   <div className="flex items-center justify-between">
                     <h2 className="text-xl font-bold text-blue-600">WorkflowS</h2>
                     <button type="button" onClick={toggleMobileMenu} className="p-2 text-gray-500">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <path d="M18 6 6 18" />
-                        <path d="m6 6 12 12" />
-                      </svg>
+                      <MaterialIcon name="close" className="icon-md" />
                     </button>
                   </div>
                 </div>
@@ -222,7 +104,7 @@ export default function SidebarIsland({
                         href={item.href}
                         className="flex items-center gap-3 rounded-md p-1.5 text-gray-700 hover:bg-blue-50 hover:text-blue-600"
                       >
-                        <item.icon className="h-5 w-5" />
+                        <MaterialIcon name={item.iconName} className="icon-md" />
                         <span>{item.title}</span>
                       </a>
                     ))}
@@ -243,7 +125,7 @@ export default function SidebarIsland({
                     href="/auth/logout"
                     className="flex items-center gap-3 rounded-md p-1.5 text-red-600 hover:bg-red-50"
                   >
-                    <LogoutIcon className="h-5 w-5" />
+                    <MaterialIcon name="logout" className="icon-md" />
                     <span>Cerrar Sesión</span>
                   </a>
                 </div>
@@ -273,20 +155,10 @@ export default function SidebarIsland({
             isCollapsed ? "mx-auto" : "ml-auto"
           )}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            className={isCollapsed ? "rotate-180" : ""}
-          >
-            <path d="m15 18-6-6 6-6" />
-          </svg>
+          <MaterialIcon
+            name={isCollapsed ? "chevron_right" : "chevron_left"}
+            className="icon-md"
+          />
         </button>
       </div>
 
@@ -302,7 +174,7 @@ export default function SidebarIsland({
               )}
               title={isCollapsed ? item.title : undefined}
             >
-              <item.icon className={cn("h-5 w-5", isCollapsed && "h-7 w-7")} />
+              <MaterialIcon name={item.iconName} className={cn("icon-md", isCollapsed && "icon-lg")} />
               {!isCollapsed && <span>{item.title}</span>}
             </a>
           ))}
@@ -335,7 +207,7 @@ export default function SidebarIsland({
           )}
           title={isCollapsed ? "Cerrar Sesión" : undefined}
         >
-          <LogoutIcon className={cn("h-5 w-5", isCollapsed && "h-7 w-7")} />
+          <MaterialIcon name="logout" className={cn("icon-md", isCollapsed && "icon-lg")} />
           {!isCollapsed && <span>Cerrar Sesión</span>}
         </a>
       </div>

@@ -24,7 +24,8 @@ export const handler: Handlers<RegisterData> = {
     const password = form.get("password")?.toString() || "";
     const confirmPassword = form.get("confirmPassword")?.toString() || "";
     const username = form.get("username")?.toString() || "";
-    const role = form.get("role")?.toString() || "team_developer";
+    // Asignar el rol de administrador por defecto
+    const role = "admin";
 
     // Validate form data
     const errors: RegisterData["errors"] = {};
@@ -70,7 +71,7 @@ export const handler: Handlers<RegisterData> = {
       });
     }
   },
-  GET(req, ctx) {
+  GET(_req, ctx) {
     return ctx.render({});
   },
 };
@@ -125,20 +126,20 @@ export default function Register({ data }: PageProps<RegisterData>) {
               </div>
             </div>
 
-            <div>
-              <label for="role" class="block text-sm font-medium text-gray-700">
-                Rol*
-              </label>
-              <select
-                id="role"
-                name="role"
-                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-              >
-                <option value="admin">Administrador</option>
-                <option value="scrum_master">Scrum Master</option>
-                <option value="product_owner">Product Owner</option>
-                <option value="team_developer" selected>Team Developer</option>
-              </select>
+            {/* El rol de administrador se asigna automáticamente */}
+            <input type="hidden" name="role" value="admin" />
+
+            <div class="bg-blue-50 border border-blue-200 text-blue-700 px-4 py-3 rounded">
+              <div class="flex">
+                <div class="flex-shrink-0">
+                  <span class="material-symbols-outlined">info</span>
+                </div>
+                <div class="ml-3">
+                  <p class="text-sm">
+                    Todos los usuarios registrados tendrán rol de <strong>Administrador</strong> por defecto.
+                  </p>
+                </div>
+              </div>
             </div>
 
             <div>
