@@ -9,5 +9,11 @@ import "$std/dotenv/load.ts";
 import { start } from "$fresh/server.ts";
 import manifest from "./fresh.gen.ts";
 import config from "./fresh.config.ts";
+import { initDatabase } from "./utils/db.ts";
 
+// Initialize the database connection
+console.log("Initializing database connection...");
+await initDatabase();
+
+// Start the Fresh application
 await start(manifest, config);

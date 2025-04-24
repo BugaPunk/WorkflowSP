@@ -22,6 +22,11 @@
   ],
   "imports": {
     "$fresh/": "https://deno.land/x/fresh@1.7.3/",
+    "@types/pg": "npm:@types/pg@^8.11.13",
+    "bcrypt": "https://deno.land/x/bcrypt@v0.4.1/mod.ts",
+    "drizzle-kit": "npm:drizzle-kit@^0.31.0",
+    "drizzle-orm": "npm:drizzle-orm@^0.42.0",
+    "pg": "npm:pg@^8.15.5",
     "preact": "https://esm.sh/preact@10.22.0",
     "preact/": "https://esm.sh/preact@10.22.0/",
     "@preact/signals": "https://esm.sh/*@preact/signals@1.2.2",

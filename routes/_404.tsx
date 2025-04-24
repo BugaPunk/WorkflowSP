@@ -15,11 +15,11 @@ export default function Error404() {
             height="128"
             alt="the Fresh logo: a sliced lemon dripping with juice"
           />
-          <h1 class="text-4xl font-bold">404 - Page not found</h1>
+          <h1 class="text-4xl font-bold">404 - Pagina no encontrada :(</h1>
           <p class="my-4">
-            The page you were looking for doesn't exist.
+            La página que estás buscando no existe.
           </p>
-          <a href="/" class="underline">Go back home</a>
+          <a href="/" class="underline">Regresar al inicio</a>
         </div>
       </div>
     </>
