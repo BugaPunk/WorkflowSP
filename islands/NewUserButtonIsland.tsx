@@ -27,7 +27,7 @@ export default function NewUserButtonIsland() {
         window.location.reload();
       } else {
         console.error("Error al crear el usuario");
-        // Aquí podrías mostrar un mensaje de error
+        // Mas mensajes de error
       }
     } catch (error) {
       console.error("Error al crear el usuario:", error);

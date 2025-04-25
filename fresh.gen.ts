@@ -16,10 +16,15 @@ import * as $dashboard_tasks from "./routes/dashboard/tasks.tsx";
 import * as $dashboard_team from "./routes/dashboard/team.tsx";
 import * as $dashboard_users from "./routes/dashboard/users.tsx";
 import * as $index from "./routes/index.tsx";
+import * as $DeleteConfirmationIsland from "./islands/DeleteConfirmationIsland.tsx";
+import * as $DeleteUserConfirmationIsland from "./islands/DeleteUserConfirmationIsland.tsx";
+import * as $EditUserFormIsland from "./islands/EditUserFormIsland.tsx";
 import * as $ModalIsland from "./islands/ModalIsland.tsx";
 import * as $NewUserButtonIsland from "./islands/NewUserButtonIsland.tsx";
 import * as $SidebarIsland from "./islands/SidebarIsland.tsx";
 import * as $UserFormIsland from "./islands/UserFormIsland.tsx";
+import * as $UserSearchIsland from "./islands/UserSearchIsland.tsx";
+import * as $UserTableIsland from "./islands/UserTableIsland.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -40,10 +45,15 @@ const manifest = {
     "./routes/index.tsx": $index,
   },
   islands: {
+    "./islands/DeleteConfirmationIsland.tsx": $DeleteConfirmationIsland,
+    "./islands/DeleteUserConfirmationIsland.tsx": $DeleteUserConfirmationIsland,
+    "./islands/EditUserFormIsland.tsx": $EditUserFormIsland,
     "./islands/ModalIsland.tsx": $ModalIsland,
     "./islands/NewUserButtonIsland.tsx": $NewUserButtonIsland,
     "./islands/SidebarIsland.tsx": $SidebarIsland,
     "./islands/UserFormIsland.tsx": $UserFormIsland,
+    "./islands/UserSearchIsland.tsx": $UserSearchIsland,
+    "./islands/UserTableIsland.tsx": $UserTableIsland,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;

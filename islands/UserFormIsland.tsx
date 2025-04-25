@@ -16,31 +16,17 @@ interface UserData {
 }
 
 export default function UserFormIsland({ isOpen, onClose, onSubmit }: UserFormProps) {
+  // Siempre establecemos el rol como "team_developer"
   const [userData, setUserData] = useState<UserData>({
     name: "",
     email: "",
-    role: "team_developer",
+    role: "team_developer", // Rol fijo
     password: "",
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  // Función para actualizar el valor del select (rol)
-  const handleSelectChange = (e: Event) => {
-    const target = e.target as HTMLSelectElement;
-    setUserData({
-      ...userData,
-      [target.name]: target.value,
-    });
-
-    // Limpiar error cuando el usuario comienza a escribir
-    if (errors[target.name]) {
-      setErrors({
-        ...errors,
-        [target.name]: "",
-      });
-    }
-  };
+  // Ya no necesitamos la función handleSelectChange porque el rol es fijo
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -129,21 +115,19 @@ export default function UserFormIsland({ isOpen, onClose, onSubmit }: UserFormPr
             </div>
 
             <div>
-              <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-2">
-                Rol
-              </label>
-              <select
-                id="role"
-                name="role"
-                value={userData.role}
-                onChange={handleSelectChange}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 px-4 py-2.5 text-base"
-              >
-                <option value="admin">Administrador</option>
-                <option value="scrum_master">Scrum Master</option>
-                <option value="product_owner">Product Owner</option>
-                <option value="team_developer">Team Developer</option>
-              </select>
+              <input type="hidden" name="role" value="team_developer" />
+              <div className="bg-blue-50 border border-blue-200 text-blue-700 px-4 py-3 rounded">
+                <div className="flex">
+                  <div className="flex-shrink-0">
+                    <span className="material-symbols-outlined">info</span>
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-sm">
+                      Todos los usuarios se crean con rol de <strong>Team Developer</strong>. Los roles específicos se asignarán cuando se incluyan en un proyecto.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div>

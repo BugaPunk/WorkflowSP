@@ -15,6 +15,26 @@ export async function getUserByEmail(email: string) {
   return await db.select().from(schema.users).where(eq(schema.users.email, email));
 }
 
+export async function getAllUsers() {
+  return await db.select().from(schema.users);
+}
+
+export async function updateUser(id: number, userData: Partial<Omit<typeof schema.users.$inferInsert, "id" | "createdAt" | "updatedAt">>) {
+  return await db.update(schema.users)
+    .set({
+      ...userData,
+      updatedAt: new Date()
+    })
+    .where(eq(schema.users.id, id))
+    .returning();
+}
+
+export async function deleteUser(id: number) {
+  return await db.delete(schema.users)
+    .where(eq(schema.users.id, id))
+    .returning();
+}
+
 export async function validateUserCredentials(email: string, password: string) {
   const users = await getUserByEmail(email);
   if (users.length === 0) {
