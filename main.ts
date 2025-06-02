@@ -4,7 +4,9 @@
 /// <reference lib="dom.asynciterable" />
 /// <reference lib="deno.ns" />
 
-import "$std/dotenv/load.ts";
+// Cargar variables de entorno sin validación estricta
+import { load } from "$std/dotenv/mod.ts";
+await load({ export: true, allowEmptyValues: true });
 
 import { start } from "$fresh/server.ts";
 import manifest from "./fresh.gen.ts";

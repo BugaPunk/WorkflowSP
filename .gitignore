@@ -1,5 +1,5 @@
 # dotenv environment variable files
-.env
+# .env
 .env.development.local
 .env.test.local
 .env.production.local
@@ -16,6 +16,7 @@ node_modules/
 # Intellij
 .idea/
 
+# Carpetas
 componentes/
 docs/
 iteraciones/

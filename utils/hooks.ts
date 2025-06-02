@@ -2,11 +2,11 @@
 export function useIsMobile(): boolean {
   // In a server-side rendering environment like Fresh, we need to handle this differently
   // For simplicity, we'll return false by default
-  if (typeof window === "undefined") {
+  if (typeof globalThis === "undefined" || typeof globalThis.innerWidth === "undefined") {
     return false;
   }
-  
-  return window.innerWidth < 768;
+
+  return globalThis.innerWidth < 768;
 }
 
 // Utility function to combine class names

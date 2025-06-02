@@ -22,6 +22,7 @@ import * as $EditUserFormIsland from "./islands/EditUserFormIsland.tsx";
 import * as $ModalIsland from "./islands/ModalIsland.tsx";
 import * as $NewUserButtonIsland from "./islands/NewUserButtonIsland.tsx";
 import * as $SidebarIsland from "./islands/SidebarIsland.tsx";
+import * as $ThemeSwitchIsland from "./islands/ThemeSwitchIsland.tsx";
 import * as $UserFormIsland from "./islands/UserFormIsland.tsx";
 import * as $UserSearchIsland from "./islands/UserSearchIsland.tsx";
 import * as $UserTableIsland from "./islands/UserTableIsland.tsx";
@@ -51,6 +52,7 @@ const manifest = {
     "./islands/ModalIsland.tsx": $ModalIsland,
     "./islands/NewUserButtonIsland.tsx": $NewUserButtonIsland,
     "./islands/SidebarIsland.tsx": $SidebarIsland,
+    "./islands/ThemeSwitchIsland.tsx": $ThemeSwitchIsland,
     "./islands/UserFormIsland.tsx": $UserFormIsland,
     "./islands/UserSearchIsland.tsx": $UserSearchIsland,
     "./islands/UserTableIsland.tsx": $UserTableIsland,

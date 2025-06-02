@@ -24,7 +24,7 @@ export default function NewUserButtonIsland() {
 
       if (response.ok) {
         // Recargar la página para mostrar el nuevo usuario
-        window.location.reload();
+        globalThis.location.reload();
       } else {
         console.error("Error al crear el usuario");
         // Mas mensajes de error
@@ -36,7 +36,7 @@ export default function NewUserButtonIsland() {
 
   return (
     <>
-      <button 
+      <button
         type="button"
         onClick={() => setIsModalOpen(true)}
         className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 flex items-center gap-2"
@@ -45,10 +45,10 @@ export default function NewUserButtonIsland() {
         Nuevo Usuario
       </button>
 
-      <UserFormIsland 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        onSubmit={handleSubmit} 
+      <UserFormIsland
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSubmit={handleSubmit}
       />
     </>
   );

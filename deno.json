@@ -1,13 +1,17 @@
 {
   "lock": false,
   "tasks": {
+    "init": "deno run -A scripts/init-project.ts",
     "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
     "cli": "echo \"import '\\$fresh/src/dev/cli.ts'\" | deno run --unstable -A -",
     "manifest": "deno task cli manifest $(pwd)",
     "start": "deno run -A --watch=static/,routes/ dev.ts",
     "build": "deno run -A dev.ts build",
     "preview": "deno run -A main.ts",
-    "update": "deno run -A -r https://fresh.deno.dev/update ."
+    "update": "deno run -A -r https://fresh.deno.dev/update .",
+    "migrate": "deno run -A scripts/migrate.ts",
+    "test-db": "deno run -A scripts/test-db.ts",
+    "verify": "deno run -A scripts/verify-setup.ts"
   },
   "lint": {
     "rules": {
@@ -22,6 +26,7 @@
   ],
   "imports": {
     "$fresh/": "https://deno.land/x/fresh@1.7.3/",
+    "@biomejs/biome": "npm:@biomejs/biome@^1.9.4",
     "@types/pg": "npm:@types/pg@^8.11.13",
     "bcrypt": "https://deno.land/x/bcrypt@v0.4.1/mod.ts",
     "drizzle-kit": "npm:drizzle-kit@^0.31.0",

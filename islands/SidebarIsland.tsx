@@ -1,5 +1,6 @@
 import { useState } from "preact/hooks";
 import { cn, useIsMobile } from "../utils/hooks.ts";
+import ThemeSwitchIsland from "./ThemeSwitchIsland.tsx";
 
 // Material Symbols Icons Component
 function MaterialIcon({ name, className = "" }: { name: string; className?: string }) {
@@ -83,11 +84,11 @@ export default function SidebarIsland({
         {isMobileMenuOpen && (
           <div className="fixed inset-0 z-40 bg-black bg-opacity-50" onClick={toggleMobileMenu}>
             <div
-              className="fixed inset-y-0 left-0 w-64 bg-white shadow-lg"
+              className="fixed inset-y-0 left-0 w-64 bg-white dark:bg-gray-800 shadow-lg"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex flex-col h-full">
-                <div className="p-4 border-b">
+                <div className="p-4 border-b border-gray-200 dark:border-gray-700">
                   <div className="flex items-center justify-between">
                     <h2 className="text-xl font-bold text-blue-600">WorkflowS</h2>
                     <button type="button" onClick={toggleMobileMenu} className="p-2 text-gray-500">
@@ -102,7 +103,7 @@ export default function SidebarIsland({
                       <a
                         key={item.title}
                         href={item.href}
-                        className="flex items-center gap-3 rounded-md p-1.5 text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                        className="flex items-center gap-3 rounded-md p-1.5 text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 dark:hover:text-blue-400"
                       >
                         <MaterialIcon name={item.iconName} className="icon-md" />
                         <span>{item.title}</span>
@@ -111,15 +112,16 @@ export default function SidebarIsland({
                   </nav>
                 </div>
 
-                <div className="p-4 border-t">
+                <div className="p-4 border-t border-gray-200 dark:border-gray-700">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold">
                       {user.name.charAt(0)}
                     </div>
-                    <div>
+                    <div className="flex-grow">
                       <p className="font-medium">{user.name}</p>
-                      <p className="text-sm text-gray-500">{user.formattedRole || user.role}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">{user.formattedRole || user.role}</p>
                     </div>
+                    <ThemeSwitchIsland />
                   </div>
                   <a
                     href="/auth/logout"
@@ -141,17 +143,17 @@ export default function SidebarIsland({
   return (
     <div
       className={cn(
-        "fixed inset-y-0 left-0 z-30 flex flex-col bg-white border-r transition-all duration-300",
+        "fixed inset-y-0 left-0 z-30 flex flex-col bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 transition-all duration-300",
         isCollapsed ? "w-16" : "w-64"
       )}
     >
-      <div className="p-4 border-b flex items-center justify-between">
+      <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
         {!isCollapsed && <h2 className="text-xl font-bold text-blue-600">WorkflowS</h2>}
         <button
           type="button"
           onClick={toggleSidebar}
           className={cn(
-            "p-2 rounded-md hover:bg-gray-100",
+            "p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700",
             isCollapsed ? "mx-auto" : "ml-auto"
           )}
         >
@@ -169,7 +171,7 @@ export default function SidebarIsland({
               key={item.title}
               href={item.href}
               className={cn(
-                "flex items-center gap-3 rounded-md p-1.5 text-gray-700 hover:bg-blue-50 hover:text-blue-600",
+                "flex items-center gap-3 rounded-md p-1.5 text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 dark:hover:text-blue-400",
                 isCollapsed && "justify-center px-1.5"
               )}
               title={isCollapsed ? item.title : undefined}
@@ -181,7 +183,7 @@ export default function SidebarIsland({
         </nav>
       </div>
 
-      <div className="p-4 border-t">
+      <div className="p-4 border-t border-gray-200 dark:border-gray-700">
         {isCollapsed ? (
           <div className="flex justify-center">
             <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold">
@@ -193,10 +195,11 @@ export default function SidebarIsland({
             <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold">
               {user.name.charAt(0)}
             </div>
-            <div>
+            <div className="flex-grow">
               <p className="font-medium">{user.name}</p>
-              <p className="text-sm text-gray-500">{user.formattedRole || user.role}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">{user.formattedRole || user.role}</p>
             </div>
+            <ThemeSwitchIsland />
           </div>
         )}
         <a

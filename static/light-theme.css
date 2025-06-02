@@ -1,0 +1,93 @@
+/* Estilos específicos para el tema claro */
+html:not(.dark) {
+  background-color: #ffffff !important;
+  color: #1a202c !important;
+}
+
+html:not(.dark) body {
+  background-color: #ffffff !important;
+  color: #1a202c !important;
+}
+
+/* Dashboard */
+html:not(.dark) .min-h-screen.bg-gray-50 {
+  background-color: #f9fafb !important;
+}
+
+/* Sidebar */
+html:not(.dark) .bg-white {
+  background-color: #ffffff !important;
+}
+
+html:not(.dark) .border-gray-200 {
+  border-color: #e5e7eb !important;
+}
+
+html:not(.dark) .text-gray-700 {
+  color: #374151 !important;
+}
+
+html:not(.dark) .text-gray-500 {
+  color: #6b7280 !important;
+}
+
+html:not(.dark) .hover\:bg-gray-100:hover {
+  background-color: #f3f4f6 !important;
+}
+
+html:not(.dark) .hover\:bg-gray-50:hover {
+  background-color: #f9fafb !important;
+}
+
+/* Botones */
+html:not(.dark) .bg-blue-600 {
+  background-color: #2563eb !important;
+}
+
+html:not(.dark) .hover\:bg-blue-700:hover {
+  background-color: #1d4ed8 !important;
+}
+
+/* Inputs */
+html:not(.dark) input,
+html:not(.dark) select,
+html:not(.dark) textarea {
+  background-color: #ffffff !important;
+  color: #1a202c !important;
+  border-color: #e5e7eb !important;
+}
+
+/* Tablas */
+html:not(.dark) .bg-gray-50 th {
+  background-color: #f9fafb !important;
+  color: #374151 !important;
+}
+
+html:not(.dark) .divide-gray-200 > * + * {
+  border-color: #e5e7eb !important;
+}
+
+/* Notificaciones */
+html:not(.dark) .bg-green-50 {
+  background-color: #ecfdf5 !important;
+}
+
+html:not(.dark) .bg-red-50 {
+  background-color: #fef2f2 !important;
+}
+
+html:not(.dark) .text-green-700 {
+  color: #047857 !important;
+}
+
+html:not(.dark) .text-red-700 {
+  color: #b91c1c !important;
+}
+
+html:not(.dark) .border-green-200 {
+  border-color: #a7f3d0 !important;
+}
+
+html:not(.dark) .border-red-200 {
+  border-color: #fecaca !important;
+}

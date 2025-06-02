@@ -7,7 +7,7 @@ export const handler = async (_req: Request, _ctx: FreshContext): Promise<Respon
     const result = await db.execute(
       `SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'`
     );
-    
+
     return new Response(JSON.stringify({
       success: true,
       message: "Database connection successful",
@@ -19,11 +19,11 @@ export const handler = async (_req: Request, _ctx: FreshContext): Promise<Respon
     });
   } catch (error) {
     console.error("Database error:", error);
-    
+
     return new Response(JSON.stringify({
       success: false,
       message: "Database connection failed",
-      error: error.message
+      error: error instanceof Error ? error.message : String(error)
     }), {
       status: 500,
       headers: {

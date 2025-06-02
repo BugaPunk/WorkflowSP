@@ -32,7 +32,7 @@ export default function UserSearchIsland({ users, onSearch }: UserSearchProps) {
       return (
         user.name.toLowerCase().includes(searchTermLower) ||
         user.email.toLowerCase().includes(searchTermLower) ||
-        user.formattedRole.toLowerCase().includes(searchTermLower)
+        (user.formattedRole?.toLowerCase() || user.role.toLowerCase()).includes(searchTermLower)
       );
     });
 

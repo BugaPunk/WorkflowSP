@@ -4,10 +4,7 @@ import {
   text,
   varchar,
   timestamp,
-  boolean,
   integer,
-  primaryKey,
-  foreignKey,
 } from "drizzle-orm/pg-core";
 
 // Users table
