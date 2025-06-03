@@ -1,7 +1,5 @@
 import { Handlers } from "$fresh/server.ts";
-import { db } from "../../db/db.ts";
-import * as schema from "../../db/schema.ts";
-import { eq as _eq } from "drizzle-orm";
+import { getAllProjects, createProject } from "../../db/services.ts";
 import { getSessionData, requireAuth } from "../../utils/auth.ts";
 
 export const handler: Handlers = {
@@ -18,8 +16,8 @@ export const handler: Handlers = {
 
     try {
       // Obtener proyectos
-      const projects = await db.select().from(schema.projects);
-      
+      const projects = await getAllProjects();
+
       return new Response(JSON.stringify(projects), {
         headers: { "Content-Type": "application/json" },
       });
@@ -70,11 +68,11 @@ export const handler: Handlers = {
       }
 
       // Crear proyecto
-      const [newProject] = await db.insert(schema.projects).values({
+      const [newProject] = await createProject({
         name: body.name,
         description: body.description || null,
         ownerId: body.ownerId || sessionData.id,
-      }).returning();
+      });
       
       return new Response(JSON.stringify(newProject), {
         status: 201,

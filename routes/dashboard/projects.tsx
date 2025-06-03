@@ -6,7 +6,7 @@ import ProjectsListIsland from "../../islands/ProjectsListIsland.tsx";
 import { ProjectStatus } from "../../models/project.ts";
 
 export const handler: Handlers = {
-  GET(req, ctx) {
+  async GET(req, ctx) {
     // Verificar si el usuario está autenticado
     const redirectResponse = requireAuth(req);
     if (redirectResponse) {
@@ -28,37 +28,61 @@ export const handler: Handlers = {
       formattedRole: "Team Developer"
     };
 
-    // Obtener proyectos (en una implementación real, esto vendría de la base de datos)
-    // Por ahora, usamos datos de ejemplo
-    const projects = [
-      {
-        id: 1,
-        name: "Proyecto Scrum",
-        description: "Implementación de metodología Scrum para gestión de proyectos académicos.",
-        ownerId: 1,
-        createdAt: new Date("2023-05-15"),
-        updatedAt: new Date("2023-05-15"),
-        status: ProjectStatus.ACTIVE
-      },
-      {
-        id: 2,
-        name: "Sistema de Evaluación",
-        description: "Desarrollo de un sistema de evaluación para proyectos académicos.",
-        ownerId: 1,
-        createdAt: new Date("2023-04-10"),
-        updatedAt: new Date("2023-04-10"),
-        status: ProjectStatus.IN_PROGRESS
-      },
-      {
-        id: 3,
-        name: "Portal Educativo",
-        description: "Creación de un portal educativo para la Universidad La Salle.",
-        ownerId: 1,
-        createdAt: new Date("2023-03-20"),
-        updatedAt: new Date("2023-03-20"),
-        status: ProjectStatus.COMPLETED
+    let projects = [];
+
+    try {
+      // Intentar obtener proyectos reales de la base de datos
+      const response = await fetch(`${req.url.split('/dashboard')[0]}/api/projects`, {
+        headers: {
+          'Cookie': req.headers.get('Cookie') || ''
+        }
+      });
+
+      if (response.ok) {
+        const realProjects = await response.json();
+        projects = realProjects.map((project: any) => ({
+          ...project,
+          status: project.status || ProjectStatus.ACTIVE,
+          createdAt: new Date(project.createdAt),
+          updatedAt: new Date(project.updatedAt)
+        }));
+      } else {
+        throw new Error('Failed to fetch projects');
       }
-    ];
+    } catch (error) {
+      console.error("Error al obtener proyectos:", error);
+
+      // En caso de error, usar datos de ejemplo
+      projects = [
+        {
+          id: 1,
+          name: "Proyecto Scrum",
+          description: "Implementación de metodología Scrum para gestión de proyectos académicos.",
+          ownerId: 1,
+          createdAt: new Date("2023-05-15"),
+          updatedAt: new Date("2023-05-15"),
+          status: ProjectStatus.ACTIVE
+        },
+        {
+          id: 2,
+          name: "Sistema de Evaluación",
+          description: "Desarrollo de un sistema de evaluación para proyectos académicos.",
+          ownerId: 1,
+          createdAt: new Date("2023-04-10"),
+          updatedAt: new Date("2023-04-10"),
+          status: ProjectStatus.IN_PROGRESS
+        },
+        {
+          id: 3,
+          name: "Portal Educativo",
+          description: "Creación de un portal educativo para la Universidad La Salle.",
+          ownerId: 1,
+          createdAt: new Date("2023-03-20"),
+          updatedAt: new Date("2023-03-20"),
+          status: ProjectStatus.COMPLETED
+        }
+      ];
+    }
 
     return ctx.render({ user, projects });
   },

@@ -10,7 +10,7 @@ interface ProjectsListIslandProps {
 }
 
 export default function ProjectsListIsland({ initialProjects, userId }: ProjectsListIslandProps) {
-  const [projects, _setProjects] = useState<Project[]>(initialProjects);
+  const [projects, setProjects] = useState<Project[]>(initialProjects);
   
   // Estados para modales
   const [showCreateModal, setShowCreateModal] = useState(false);
@@ -46,25 +46,44 @@ export default function ProjectsListIsland({ initialProjects, userId }: Projects
     }
   };
 
+  // Función para recargar proyectos desde la API
+  const reloadProjects = async () => {
+    try {
+      const response = await fetch('/api/projects');
+      if (response.ok) {
+        const updatedProjects = await response.json();
+        setProjects(updatedProjects.map((project: any) => ({
+          ...project,
+          createdAt: new Date(project.createdAt),
+          updatedAt: new Date(project.updatedAt)
+        })));
+      }
+    } catch (error) {
+      console.error('Error al recargar proyectos:', error);
+    }
+  };
+
   // Función para manejar la creación de un proyecto
-  const handleProjectCreated = () => {
+  const handleProjectCreated = async () => {
     setShowCreateModal(false);
-    // En una implementación real, aquí recargaríamos los proyectos
-    // Por ahora, simplemente cerramos el modal
+    // Recargar la lista de proyectos
+    await reloadProjects();
   };
 
   // Función para manejar la edición de un proyecto
-  const handleProjectEdited = () => {
+  const handleProjectEdited = async () => {
     setShowEditModal(false);
     setSelectedProject(null);
-    // En una implementación real, aquí recargaríamos los proyectos
+    // Recargar la lista de proyectos
+    await reloadProjects();
   };
 
   // Función para manejar la asignación de usuarios a un proyecto
-  const handleProjectAssigned = () => {
+  const handleProjectAssigned = async () => {
     setShowAssignModal(false);
     setSelectedProject(null);
-    // En una implementación real, aquí recargaríamos los miembros del proyecto
+    // Recargar la lista de proyectos para reflejar cambios
+    await reloadProjects();
   };
 
   return (

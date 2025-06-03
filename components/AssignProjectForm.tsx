@@ -71,7 +71,6 @@ export default function AssignProjectForm({
         },
         body: JSON.stringify({
           userId: selectedUserId,
-          projectId: project.id,
           role: selectedRole,
         }),
       });

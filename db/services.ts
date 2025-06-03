@@ -60,8 +60,23 @@ export async function getProjectById(id: number) {
   return await db.select().from(schema.projects).where(eq(schema.projects.id, id)).limit(1);
 }
 
+export async function getAllProjects() {
+  return await db.select().from(schema.projects);
+}
+
 export async function getProjectsByOwnerId(ownerId: number) {
   return await db.select().from(schema.projects).where(eq(schema.projects.ownerId, ownerId));
+}
+
+export async function updateProject(id: number, projectData: Partial<Omit<typeof schema.projects.$inferInsert, "id" | "createdAt" | "updatedAt">>) {
+  return await db.update(schema.projects).set({
+    ...projectData,
+    updatedAt: new Date()
+  }).where(eq(schema.projects.id, id)).returning();
+}
+
+export async function deleteProject(id: number) {
+  return await db.delete(schema.projects).where(eq(schema.projects.id, id)).returning();
 }
 
 // Team services

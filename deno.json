@@ -11,7 +11,10 @@
     "update": "deno run -A -r https://fresh.deno.dev/update .",
     "migrate": "deno run -A scripts/migrate.ts",
     "test-db": "deno run -A scripts/test-db.ts",
-    "verify": "deno run -A scripts/verify-setup.ts"
+    "verify": "deno run -A scripts/verify-setup.ts",
+    "seed-projects": "deno run -A scripts/seed-projects.ts",
+    "test-members": "deno run -A scripts/test-project-members.ts",
+    "seed-users": "deno run -A scripts/seed-users.ts"
   },
   "lint": {
     "rules": {

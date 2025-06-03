@@ -8,6 +8,8 @@ import * as $about from "./routes/about.tsx";
 import * as $api_db_test from "./routes/api/db-test.ts";
 import * as $api_projects from "./routes/api/projects.ts";
 import * as $api_projects_id_ from "./routes/api/projects/[id].ts";
+import * as $api_projects_id_members from "./routes/api/projects/[id]/members.ts";
+import * as $api_projects_members_memberId_ from "./routes/api/projects/members/[memberId].ts";
 import * as $api_users from "./routes/api/users.ts";
 import * as $auth_login from "./routes/auth/login.tsx";
 import * as $auth_logout from "./routes/auth/logout.ts";
@@ -41,6 +43,9 @@ const manifest = {
     "./routes/api/db-test.ts": $api_db_test,
     "./routes/api/projects.ts": $api_projects,
     "./routes/api/projects/[id].ts": $api_projects_id_,
+    "./routes/api/projects/[id]/members.ts": $api_projects_id_members,
+    "./routes/api/projects/members/[memberId].ts":
+      $api_projects_members_memberId_,
     "./routes/api/users.ts": $api_users,
     "./routes/auth/login.tsx": $auth_login,
     "./routes/auth/logout.ts": $auth_logout,
