@@ -6,12 +6,15 @@ import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $about from "./routes/about.tsx";
 import * as $api_db_test from "./routes/api/db-test.ts";
+import * as $api_projects from "./routes/api/projects.ts";
+import * as $api_projects_id_ from "./routes/api/projects/[id].ts";
 import * as $api_users from "./routes/api/users.ts";
 import * as $auth_login from "./routes/auth/login.tsx";
 import * as $auth_logout from "./routes/auth/logout.ts";
 import * as $auth_register from "./routes/auth/register.tsx";
 import * as $dashboard_index from "./routes/dashboard/index.tsx";
 import * as $dashboard_projects from "./routes/dashboard/projects.tsx";
+import * as $dashboard_projects_id_ from "./routes/dashboard/projects/[id].tsx";
 import * as $dashboard_tasks from "./routes/dashboard/tasks.tsx";
 import * as $dashboard_team from "./routes/dashboard/team.tsx";
 import * as $dashboard_users from "./routes/dashboard/users.tsx";
@@ -21,6 +24,8 @@ import * as $DeleteUserConfirmationIsland from "./islands/DeleteUserConfirmation
 import * as $EditUserFormIsland from "./islands/EditUserFormIsland.tsx";
 import * as $ModalIsland from "./islands/ModalIsland.tsx";
 import * as $NewUserButtonIsland from "./islands/NewUserButtonIsland.tsx";
+import * as $ProjectDetailIsland from "./islands/ProjectDetailIsland.tsx";
+import * as $ProjectsListIsland from "./islands/ProjectsListIsland.tsx";
 import * as $SidebarIsland from "./islands/SidebarIsland.tsx";
 import * as $ThemeSwitchIsland from "./islands/ThemeSwitchIsland.tsx";
 import * as $UserFormIsland from "./islands/UserFormIsland.tsx";
@@ -34,12 +39,15 @@ const manifest = {
     "./routes/_app.tsx": $_app,
     "./routes/about.tsx": $about,
     "./routes/api/db-test.ts": $api_db_test,
+    "./routes/api/projects.ts": $api_projects,
+    "./routes/api/projects/[id].ts": $api_projects_id_,
     "./routes/api/users.ts": $api_users,
     "./routes/auth/login.tsx": $auth_login,
     "./routes/auth/logout.ts": $auth_logout,
     "./routes/auth/register.tsx": $auth_register,
     "./routes/dashboard/index.tsx": $dashboard_index,
     "./routes/dashboard/projects.tsx": $dashboard_projects,
+    "./routes/dashboard/projects/[id].tsx": $dashboard_projects_id_,
     "./routes/dashboard/tasks.tsx": $dashboard_tasks,
     "./routes/dashboard/team.tsx": $dashboard_team,
     "./routes/dashboard/users.tsx": $dashboard_users,
@@ -51,6 +59,8 @@ const manifest = {
     "./islands/EditUserFormIsland.tsx": $EditUserFormIsland,
     "./islands/ModalIsland.tsx": $ModalIsland,
     "./islands/NewUserButtonIsland.tsx": $NewUserButtonIsland,
+    "./islands/ProjectDetailIsland.tsx": $ProjectDetailIsland,
+    "./islands/ProjectsListIsland.tsx": $ProjectsListIsland,
     "./islands/SidebarIsland.tsx": $SidebarIsland,
     "./islands/ThemeSwitchIsland.tsx": $ThemeSwitchIsland,
     "./islands/UserFormIsland.tsx": $UserFormIsland,
